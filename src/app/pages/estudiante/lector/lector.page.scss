@@ -1,0 +1,52 @@
+ion-toolbar {
+    --background: rebeccapurple;
+    color: white;
+}
+
+ion-back-button {
+    color:white
+}
+
+ion-content{
+    --background:darkorange;
+  }
+
+
+ion-text{
+    align-self: center;
+}
+
+ion-card-title{
+    color: rebeccapurple;
+}
+
+ion-card-content{
+    color: rebeccapurple;
+}
+
+#contenedor1 {
+  img{
+    height: 70px;
+    margin-top: 25%;
+  }
+}
+
+#contenedor2 {
+  img {
+    height: 50px;
+    margin-top: 5%;
+  }
+}
+
+
+#btn1 {
+    --background: rebeccapurple;
+}
+
+#btn2 {
+    --background: gray;
+  }
+
+#resultado {
+    color: red;
+}

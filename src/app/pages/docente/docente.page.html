@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <div class="ion-text-center">
+      <ion-title>Bienvenido</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card-header>
+    <div id="contenedor1" class="container ion-text-center">
+      <img src="assets/logo.png">
+    </div>
+    <div class="ion-text-center">
+      <ion-card-title>Usuario: {{usuario}}</ion-card-title>
+      <br>
+    </div>
+  </ion-card-header>
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center>
+        <ion-button [routerLink]="['/asistencia']"expand="block" id="btn1" (click)="_">CONTROL DE ASISTENCIA</ion-button>
+        <ion-button [routerLink]="['/home']" expand="block" color="danger">CERRAR SESIÓN</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid> 
+</ion-content>

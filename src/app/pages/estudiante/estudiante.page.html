@@ -1,0 +1,107 @@
+<swiper #swiper [pagination]="pagination">
+
+  <!-- Página 1 --> 
+  <ng-template swiperSlide>
+
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button text=""></ion-back-button>
+        </ion-buttons>
+        <div class="ion-text-center">
+          <ion-title>Bienvenido</ion-title>
+        </div>
+      </ion-toolbar>
+    </ion-header>
+    
+    <ion-content>
+      <ion-card-header>
+        <div id="contenedor1" class="container ion-text-center">
+          <img src="assets/logo.png">
+        </div>
+        <div class="ion-text-center">
+          <ion-card-title>Usuario: {{usuario}}</ion-card-title>
+          <br>
+        </div>
+      </ion-card-header>
+      
+      <ion-grid>
+        <ion-row>
+          <ion-col align-self-center>
+            <ion-button (click)="tomarFoto()" expand="block" color="success">ABRIR CAMARA</ion-button>
+            <ion-button [routerLink]="['/lector']" expand="block" id="btn1">LECTOR QR</ion-button>
+            <ion-button [routerLink]="['/home']" expand="block" color="danger">CERRAR SESIÓN</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid> 
+    </ion-content>
+    
+  </ng-template>
+
+  <!-- Página 2 -->
+  <ng-template swiperSlide>
+
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button text=""></ion-back-button>
+        </ion-buttons>
+        <div class="ion-text-center">
+          <ion-title>RegistrAPP</ion-title>
+        </div>
+      </ion-toolbar>
+    </ion-header>
+    
+    <ion-content>
+      <ion-card>
+        <ion-card-header>
+          <div id="contenedor2" class="container ion-text-center">
+            <img src="assets/logo.png">
+          </div>
+          <div class="ion-text-center">
+            <ion-card-title>Mi Cuenta</ion-card-title>
+          </div>
+        </ion-card-header>
+        <ion-card-content>
+            <div>
+              <ion-item>
+                <ion-label position="floating">Usuario: </ion-label>
+                <ion-input [disabled]="true" value="{{usuario}}"></ion-input>
+              </ion-item>
+              
+              <ion-item>
+                <ion-label position="floating">Contraseña:</ion-label>
+                <ion-input [disabled]="true" value="{{contrasena}}"></ion-input>
+              </ion-item>
+            </div>
+          <br>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <div class="ion-text-center">
+            <ion-card-title>API REST</ion-card-title>
+          </div>
+        </ion-card-header>
+        <ion-card-content>
+            <div>
+              <ion-card-content>{{tituloAPI}}</ion-card-content>
+            </div>
+            <ion-button id="btn1" (click)="mostrar()" expand="block">MOSTRAR</ion-button>
+            <ion-button color="success" (click)="actualizar()" expand="block">ACTUALIZAR</ion-button>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col align-self-center>
+            <ion-button color="danger" [routerLink]="['/e404']" expand="block">ERROR 404</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid> 
+
+    </ion-content>
+
+  </ng-template>
+</swiper>

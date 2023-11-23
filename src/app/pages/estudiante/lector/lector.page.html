@@ -1,0 +1,45 @@
+<ion-header [style.visibility]="content_visibility">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <div class="ion-text-center">
+      <ion-title>Lector QR</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [style.visibility]="content_visibility">
+  <div id="contenedor1" class="container ion-text-center">
+    <img src="assets/logo.png">
+  </div>
+  <ion-card>
+    <ion-card-content [hidden]="true">
+      <qrcode 
+        [qrdata]="qrCodeString" 
+        [width]="256" 
+        [errorCorrectionLevel]="'M'">
+      </qrcode>
+    </ion-card-content>
+
+    <ion-card-content>
+      
+      <p class="ion-text-center">Intrucciones de uso del Lector de código QR:</p><br>
+      1) Presionar el botón "Escanear Código QR".<br>
+      2) Apuntar la cámara al QR generado por su docente.<br><br>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" id="btn1" class="ion-margin" 
+    (click)="startScan()">
+    ESCANEAR CÓDIGO QR
+  </ion-button>
+
+  <ion-item *ngIf="scannedResult">
+    <ion-card id="resultado">
+      <ion-card-title>Resultado del Escaneo:</ion-card-title>
+      <ion-label class="ion-text-wrap">{{scannedResult}}</ion-label>
+    </ion-card>
+  </ion-item>
+  
+</ion-content>

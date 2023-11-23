@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <div class="ion-text-center">
+      <ion-title>RegistrAPP</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <div class="container ion-text-center">
+        <img src="assets/logo.png">
+      </div>
+      <div class="ion-text-center">
+        <ion-card-title>REGISTRO</ion-card-title>
+      </div>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form [formGroup]="formularioSignup" (keyup.enter)="guardar()">
+        <ion-item>
+          <ion-label position="floating">Código de registro:</ion-label>
+          <ion-input formControlName="cod"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Usuario:</ion-label>
+          <ion-input formControlName="user"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Contraseña:</ion-label>
+          <ion-input formControlName="pwd" type="password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Confirmar contraseña:</ion-label>
+          <ion-input formControlName="pwd2" type="password"></ion-input>
+          <div id="advertencia"
+          *ngIf="formularioSignup.get('pwd2').touched || formularioSignup.get('pwd2').dirty && (formularioSignup.get('pwd2') !== formularioSignup.get('pwd2'))">
+          Las contraseñas no coinciden.
+        </div>
+        </ion-item>
+      </form>
+      <br>
+      <ion-button (click)="guardar()" id="btn4" expand="block">REGISTRARSE</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <div class="ion-text-center">
+      <ion-title>Crear Clase</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <form #formulario="ngForm" (ngSubmit)="addClases()">
+      <!-- FECHA -->
+      <ion-item>
+        <ion-label>Fecha: </ion-label>
+        <ion-input type="Date" name="fecha" [(ngModel)]="newClase.fecha" required></ion-input>
+      </ion-item>
+      <!-- HORA -->
+      <ion-item>
+        <ion-label>Hora: </ion-label>
+        <ion-input type="time" name="hora" [(ngModel)]="newClase.hora" required>
+        </ion-input>
+      </ion-item>
+      <!-- CURSO -->
+      <ion-item>
+        <ion-label>Curso: </ion-label>
+        <ion-select name="curso" [(ngModel)]="newClase.curso" required>
+          <ion-select-option value="Base de datos">Base de datos</ion-select-option>
+          <ion-select-option value="BPM">BPM</ion-select-option>
+          <ion-select-option value="Emprendimiento">Emprendimiento</ion-select-option>
+          <ion-select-option value="Estadistica">Estadistica</ion-select-option>
+          <ion-select-option value="Etica">Etica</ion-select-option>
+          <ion-select-option value="Inglés">Inglés</ion-select-option>
+          <ion-select-option value="Portafolio">Portafolio</ion-select-option>
+          <ion-select-option value="Programación">Programación</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!-- SECCION -->
+      <ion-item>
+        <ion-label>Sección: </ion-label>
+        <ion-input name="secc" [(ngModel)]="newClase.secc" required></ion-input>
+      </ion-item>
+  
+      <ion-button id="btn" [disabled]="formulario.invalid" (click)="mostrar()" type="submit" expand="full">
+        Generar QR
+      </ion-button>
+    </form>
+  </ion-card>
+  <!-- CODIGO QR -->
+  <ion-card class="ion-text-center" *ngIf="muestrame">
+    <ion-card-content>
+      <qrcode 
+        [qrdata]="qrCodeString" 
+        [width]="256" 
+        [errorCorrectionLevel]="'M'">
+      </qrcode>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- REGISTRO DE CLASES-->
+  <ion-card>
+    <ion-list #myList>
+      <ion-card-header>
+        <div class="ion-text-center">
+          <ion-card-title>REGISTRO DE CLASES</ion-card-title>
+        </div>
+      </ion-card-header>
+  
+      <ion-list>
+        <ion-item-sliding *ngFor="let clase of clases">
+          <ion-item>
+            <ion-label text-wrap>
+              <h3>Fecha: {{clase.fecha}}</h3>
+              <h3>Hora: {{clase.hora}}</h3>
+              <h3>Curso: {{clase.curso}}</h3>
+              <h3>Sección: {{clase.secc}}</h3>
+              <ion-text color="secondary">
+                <p> Fecha de ingreso: {{clase.modified | date: 'short'}}</p>
+              </ion-text>
+            </ion-label>
+          </ion-item>
+          <ion-item-options side="end">
+            <ion-item-option color="danger" (click)="deleteClases(clase)"><ion-icon name="trash"></ion-icon></ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-list>
+  </ion-card>
+</ion-content>
