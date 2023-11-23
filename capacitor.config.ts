@@ -5,6 +5,7 @@ const config: CapacitorConfig = {
   appName: 'RegistrAPP',
   webDir: 'www',
   bundledWebRuntime: false
+  
 };
 
 export default config;
